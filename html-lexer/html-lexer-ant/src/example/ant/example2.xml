@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<project name="HtmlLexer example2" basedir="..">
+	<property name="html" location="d:\temp\lexer\from" />
+	<property name="todir" location="d:\temp\lexer\to" />
+
+	<typedef resource="htlex.typedef.properties" />
+
+	<target name="lower_tag">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logwritefile="info">
+				<ctag>
+					<newtag newnamecase="lower">
+						<repattr newnamecase="lower" />
+						<repattr name="http-equiv" newvaluecase="lower" />
+					</newtag>
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+
+	<target name="quote">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logWriteFile="info">
+				<ctag>
+					<newtag>
+						<repattr let="=" newquote="&quot;" />
+					</newtag>
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+
+	<target name="delete_attr">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logreadfile="verbose" logmatch="info" logwritefile="warn">
+				<ctag name="table">
+					<cattr name="id" value="table[0-9]+" valuematch="matches" />
+					<newtag>
+						<delattr name="id" />
+					</newtag>
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+
+	<target name="find1">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logmatch="info">
+				<ctag name="SCRIPT" namematch="ignorecase">
+					<!--<tagto />-->
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+
+	<target name="find2">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logreadfile="info" logmatch="info">
+				<ctag name="SCRIPT" tago="&lt;/">
+					<!--<tagto />-->
+				</ctag>
+				<ctag name="SCRIPT">
+					<cattr name="language" />
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+	<target name="find3">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logmatch="info">
+				<ctag>
+					<cattr let="" />
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+	<target name="find4_1">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logmatch="info">
+				<ctag name="table">
+					<cattr name="border" value="0" />
+					<cattr name="cellpadding" value="0" />
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+	<target name="find4_and">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logmatch="info">
+				<ctag name="table">
+					<and>
+						<cattr name="border" value="0" />
+						<cattr name="cellpadding" value="0" />
+					</and>
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+	<target name="find4_or">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logmatch="info">
+				<ctag name="table">
+					<or>
+						<cattr name="border" value="0" />
+						<cattr name="cellpadding" value="0" />
+					</or>
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+	<target name="find4_not">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logmatch="info">
+				<ctag name="table">
+					<cattr name="border" />
+					<not>
+						<cattr name="border" value="0" />
+					</not>
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+	<target name="find4_regexp">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logmatch="info">
+				<ctag name="table">
+					<cattr name="id" value="table[0-9]+" valuematch="matches" />
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+	<target name="not found">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logunmatch="info">
+				<ctag name="meta">
+					<cattr name="name" value="generator" />
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+
+	<target name="find5_if">
+		<htlex todir="${todir}" prefix="htlex2">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logmatch="info">
+				<ctag name="a">
+					<cattr if="URI_scheme(htlex.attr.value)==http" />
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+
+
+	<target name="find_text text">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logmatch="info">
+				<ctext textmatch="find" token="[\&lt;\&gt;]" />
+			</htconv>
+		</htlex>
+	</target>
+	<target name="find_text script">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logmatch="info">
+				<ctext textmatch="find" texttype="script">
+					<token>function</token>
+				</ctext>
+			</htconv>
+		</htlex>
+	</target>
+	<target name="find_text all">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logmatch="info">
+				<ctext textmatch="find" texttype="all">
+					<token>function</token>
+				</ctext>
+			</htconv>
+		</htlex>
+	</target>
+	<target name="text change-line">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logconvert="info" logwritefile="warn">
+				<ctext textmatch="find" newTextOperation="replaceAll">
+					<replaceToken>&gt;</replaceToken>
+					<replacevalue>&amp;gt;</replacevalue>
+				</ctext>
+			</htconv>
+		</htlex>
+	</target>
+	<target name="text change-lines">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logmatch="info" logconvert="info" logwritefile="warn">
+				<ctext textmatch="find" newTextOperation="replaceAll" lines="true">
+					<replaceToken>ひしだまの\r\nホームページ</replaceToken>
+					<replacevalue>ひしだまのホームページ</replacevalue>
+				</ctext>
+			</htconv>
+		</htlex>
+	</target>
+
+	<target name="body1">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logwritefile="info">
+				<ctag name="body" tago="&lt;">
+					<newtag>
+						<delattr name="bgcolor" />
+						<delattr name="text" />
+						<addattr preskip=" " newname="style" newvalue="color: #000000; background-color: #d0d0d0" />
+					</newtag>
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+	<target name="body2">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logwritefile="info">
+				<ctag name="body" tago="&lt;">
+					<newtag>
+						<addattr newname="text" newvalue="#000000" dup="update" />
+						<addattr newname="bgcolor" newvalue="#d0d0d0" dup="update" />
+					</newtag>
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+	<target name="form1">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logwritefile="info" logmatch="info" logconvert="warn">
+				<ctag name="form">
+					<newtag>
+						<repattr name="name" newname="id" dup="update" />
+					</newtag>
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+
+	<target name="amazon color attr change">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logwritefile="warn" logconvert="info">
+				<ctag name="iframe">
+					<cattr name="src" value="amazon" valuematch="find" />
+					<newtag>
+						<repattr name="src" value="bg1=c0c0c0" valueMatch="find" newValue="bg1=ffffff" newValueOperation="replaceAll" />
+						<repattr name="src" value="lc1=fff000" valueMatch="find" newValue="lc1=888000" newValueOperation="replaceAll" />
+					</newtag>
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+
+	<target name="html escape">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logwritefile="info">
+				<ctag name="iframe">
+					<newtag>
+						<repattr newValueHtmlEscape="all" />
+					</newtag>
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+
+	<target name="charset_utf8">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" outputencoding="UTF-8" logconvert="info">
+				<ctag name="meta">
+					<cattr name="http-equiv" value="Content-Type" />
+					<newtag>
+						<repattr name="content" newvalue="text/html;charset=utf-8" />
+					</newtag>
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+
+	<target name="strong">
+		<htlex todir="${todir}">
+			<fileset dir="${html}">
+				<include name="**/*.html" />
+				<exclude name="javadoc/**" />
+			</fileset>
+			<htconv encoding="MS932" logconvert="info">
+				<ctag name="b">
+					<newtag newname="strong" />
+				</ctag>
+				<ctag name="i">
+					<newtag newname="em" />
+				</ctag>
+			</htconv>
+		</htlex>
+	</target>
+
+</project>

@@ -1,0 +1,4 @@
+dependencies {
+    compile project(':html-lexer-core')
+    compile 'org.apache.ant:ant:1.9.6'
+}

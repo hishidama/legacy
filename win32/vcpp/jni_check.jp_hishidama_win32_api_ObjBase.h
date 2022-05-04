@@ -1,0 +1,3 @@
+	Java_jp_hishidama_win32_api_ObjBase_CoInitialize,
+	Java_jp_hishidama_win32_api_ObjBase_CoInitializeEx,
+	Java_jp_hishidama_win32_api_ObjBase_CoUninitialize,

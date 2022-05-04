@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<project name="swing release" default="release" basedir=".">
+	<property name="todir" location="C:\share\hmdata\html\asahi\tech\soft\java\" />
+
+	<target name="swing.zip">
+		<zip destfile="swing.zip">
+			<fileset dir="..">
+				<include name="src/**/*" />
+				<include name="sample/**/*" />
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="release" depends="swing.zip">
+		<copy file="swing.zip" todir="${todir}" />
+	</target>
+
+</project>

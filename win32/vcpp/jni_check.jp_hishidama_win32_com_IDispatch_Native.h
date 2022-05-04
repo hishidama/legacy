@@ -1,0 +1,3 @@
+	Java_jp_hishidama_win32_com_IDispatch_00024Native_GetTypeInfoCount,
+	Java_jp_hishidama_win32_com_IDispatch_00024Native_GetTypeInfo,
+	Java_jp_hishidama_win32_com_IDispatch_00024Native_GetIDsOfNames,

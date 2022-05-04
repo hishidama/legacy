@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<project name="debuglog_remove" default="make_jar" basedir=".">
+	<property name="src" location="../src" />
+	<property name="classes" location="../classes" />
+	<property name="jar" location="dbglogrm.jar" />
+	<property name="to_dir" location="C:\share\hmdata\html\asahi\soft\java" />
+
+	<target name="make_jar">
+		<delete file="${jar}" />
+		<jar jarfile="${jar}">
+			<manifest>
+				<attribute name="Premain-Class" value="jp.hishidama.jas.JasTransferPremain" />
+				<attribute name="Jas-Transfer" value="jp.hishidama.debuglogrm.DebugRemoveTransfer" />
+				<attribute name="Main-Class" value="jp.hishidama.debuglogrm.DebugRemoveExperiment" />
+			</manifest>
+			<fileset dir="${classes}">
+				<exclude name="**/jp/hishidama/test/**/*" />
+				<exclude name="**/*.dbgrm.class" />
+				<exclude name="**/*.html" />
+			</fileset>
+			<fileset dir="${src}" />
+		</jar>
+	</target>
+
+	<target name="release" depends="make_jar">
+		<copy todir="${to_dir}">
+			<fileset file="${jar}" />
+		</copy>
+	</target>
+</project>

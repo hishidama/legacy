@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<project name="sql" default="make_zip" basedir=".">
+	<property name="to_dir" location="C:\share\hmdata\html\asahi\tech\soft\java" />
+
+	<target name="make_zip">
+		<zip zipfile="hmsql.zip">
+			<fileset dir="../src" />
+		</zip>
+	</target>
+
+	<target name="release" depends="make_zip">
+		<copy todir="${to_dir}">
+			<fileset file="hmsql.zip" />
+		</copy>
+	</target>
+
+</project>

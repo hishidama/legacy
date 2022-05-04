@@ -1,0 +1,13 @@
+window-title=ひしだまJavaライブラリー (Hishidama\'s Java library)
+doc-title=ひしだまJavaライブラリー
+group-eval  =四則演算（<a target="hishidama" href="http://www.ne.jp/asahi/hishidama/home/soft/java/eval.html">使用例</a>）
+group-bitmap=ビットマップ（<a target="hishidama" href="http://www.ne.jp/asahi/hishidama/home/soft/java/bitmap.html">使用例</a>）
+group-swing =Swing（<a target="hishidama" href="http://www.ne.jp/asahi/hishidama/home/soft/java/swing.html">使用例</a>）
+group-ant   =ant独自タスク（<a target="hishidama" href="http://www.ne.jp/asahi/hishidama/home/soft/java/ant.html">使用例</a>）
+group-sql   =SQLユーティリティー（<a target="hishidama" href="http://www.ne.jp/asahi/hishidama/home/soft/java/sql.html">使用例</a>）
+group-win32 =MS-Windowsユーティリティー（<a target="hishidama" href="http://www.ne.jp/asahi/hishidama/home/soft/java/hmwin32.html">使用例</a>）
+group-dbgrm =デバッグログ出力メソッド削除（<a target="hishidama" href="http://www.ne.jp/asahi/hishidama/home/soft/java/dbglogrm.html">使用例</a>）
+group-zip   =zipツール（<a target="hishidama" href="http://www.ne.jp/asahi/hishidama/home/soft/java/zip.html">使用例</a>）
+group-util  =一般ユーティリティー
+group-htlexer=HtHtmlLexer（<a target="hishidama" href="http://www.ne.jp/asahi/hishidama/home/soft/java/htlexer.html">使用例</a>）
+group-hadoop =Hadoop拡張ライブラリー（<a target="hishidama" href="http://www.ne.jp/asahi/hishidama/home/tech/apache/hadoop/index.html">使用例</a>）

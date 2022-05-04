@@ -1,0 +1,2 @@
+	Java_jp_hishidama_win32_mshtml_IHTMLDDElement_00024Native_put_1noWrap,
+	Java_jp_hishidama_win32_mshtml_IHTMLDDElement_00024Native_get_1noWrap,

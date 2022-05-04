@@ -1,0 +1,2 @@
+	Java_jp_hishidama_win32_mshtml_IHTMLHtmlElement_00024Native_put_1version,
+	Java_jp_hishidama_win32_mshtml_IHTMLHtmlElement_00024Native_get_1version,

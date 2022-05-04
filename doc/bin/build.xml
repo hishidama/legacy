@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="Shift_JIS" standalone="no"?>
+<project name="javadoc" default="javadoc" basedir=".">
+	<property name="WS" location="../.." />
+	<property name="doc" location="../doc" />
+	<property name="to_doc" location="C:\share\hmdata\html\asahi\javadoc" />
+
+	<typedef resource="typedef.properties" classpath="../lib/hmant.jar" />
+
+	<target name="all" depends="javadoc,release" />
+
+	<target name="javadoc">
+		<native2ascii src="." dest="." ext=".properties">
+			<include name="docdata.txt" />
+		</native2ascii>
+
+		<property file="docdata.properties" />
+		<property name="overview" location="../src/overview.html" />
+
+		<delete failonerror="no">
+			<fileset dir="${doc}" excludes="**/CVS" />
+		</delete>
+
+		<javadoc locale="ja" destdir="${doc}" windowtitle="${window-title}" access="public" author="true" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="true" nohelp="true" overview="${overview}" source="1.6" splitindex="true" use="true" version="true" encoding="MS932" docencoding="MS932" charset="Shift_JIS">
+			<classpath>
+				<fileset dir="C:\">
+					<include name="eclipse3\plugins\org.junit_3.8.1\junit.jar" />
+					<include name="eclipse341p\plugins\org.apache.ant_1.7.0.v200803061910\lib\ant.jar" />
+					<include name="eclipse3\plugins\org.apache.ant_1.6.5\lib\ant.jar" />
+					<include name="Program Files\Java\javassist-3.6\javassist.jar" />
+					<include name="cygwin/usr/local/hadoop-0.20.2/hadoop-*-core.jar" />
+					<include name="cygwin/usr/local/hadoop-0.20.2/lib/log4j-*.jar" />
+					<include name="cygwin/usr/local/cascading-1.0.18-hadoop-0.19.0+/cascading-*.jar" />
+				</fileset>
+			</classpath>
+			<link href="http://java.sun.com/javase/ja/6/docs/ja/api/" />
+			<link href="http://www.csg.is.titech.ac.jp/~chiba/javassist/html/" />
+			<link href="http://hadoop.apache.org/common/docs/current/api/" />
+			<link href="http://www.cascading.org/javadoc/" />
+			<doctitle>${doc-title}</doctitle>
+
+			<sourcepath path="${WS}/eval16/src" />
+			<package name="jp.hishidama.eval.*" />
+			<package name="jp.hishidama.lang.*" />
+			<group title="${group-eval}" packages="jp.hishidama.eval*,jp.hishidama.lang*" />
+
+			<sourcepath path="${WS}/bitmap/src" />
+			<package name="jp.hishidama.bitmap.*" />
+			<group title="${group-bitmap}" packages="jp.hishidama.bitmap*" />
+
+			<sourcepath path="${WS}/swing/src" />
+			<package name="jp.hishidama.swing.*" />
+			<group title="${group-swing}" packages="jp.hishidama.swing*" />
+
+			<sourcepath path="${WS}/ant/src" />
+			<package name="jp.hishidama.ant.*" />
+			<group title="${group-ant}" packages="jp.hishidama.ant*" />
+
+			<sourcepath path="${WS}/sql/src" />
+			<package name="jp.hishidama.sql.*" />
+			<group title="${group-sql}" packages="jp.hishidama.sql*" />
+
+			<!--<sourcepath path="${WS}/win32/src"/>-->
+			<fileset dir="${WS}/win32/src" defaultexcludes="yes">
+				<exclude name="**/*.html" />
+				<!--<exclude name="**/*Const.java" />-->
+			</fileset>
+			<package name="jp.hishidama.win32.*" />
+			<package name="jp.hishidama.robot.*" />
+			<group title="${group-win32}" packages="jp.hishidama.win32*,jp.hishidama.robot*" />
+
+			<sourcepath path="${WS}/debuglog/src" />
+			<package name="jp.hishidama.debuglogrm.*" />
+			<package name="jp.hishidama.jas.*" />
+			<group title="${group-dbgrm}" packages="jp.hishidama.debuglogrm*,jp.hishidama.jas*" />
+
+			<!--<sourcepath path="${WS}/ZipCloak/src" />-->
+			<sourcepath path="${WS}/Zip16/src" />
+			<package name="jp.hishidama.zip.*" />
+			<group title="${group-zip}" packages="jp.hishidama.zip*" />
+
+			<sourcepath path="${WS}/util/src" />
+			<package name="jp.hishidama.util.*" />
+			<group title="${group-util}" packages="jp.hishidama.util*" />
+
+			<sourcepath path="${WS}/HtmlLexer/src" />
+			<package name="jp.hishidama.html.*" />
+			<package name="jp.hishidama.net.*" />
+			<group title="${group-htlexer}" packages="jp.hishidama.html*,jp.hishidama.net*" />
+
+			<sourcepath path="${WS}/hadoopCascading/src" />
+			<package name="jp.hishidama.hadoop.*" />
+			<group title="${group-hadoop}" packages="jp.hishidama.hadoop*" />
+		</javadoc>
+	</target>
+
+	<target name="replace">
+		<replace dir="${doc}" summary="on">
+			<include name="**/*.html" />
+
+			<replacefilter token="hishidama/home/soft/" value="hishidama/home/tech/soft/" />
+		</replace>
+	</target>
+	<target name="replace_proj" description="プロジェクト内のJavaソースやpackage.htmlのURLを置換する際に使う">
+		<replace dir="${WS}/swing" summary="on">
+			<include name="**/*.java" />
+			<include name="**/*.html" />
+
+			<replacefilter token="hishidama/home/soft/" value="hishidama/home/tech/soft/" />
+		</replace>
+	</target>
+
+
+
+	<target name="release_allclear_and_copy">
+		<delete dir="${to_doc}" />
+		<copy todir="${to_doc}" preservelastmodified="true">
+			<fileset dir="${doc}" excludes="**/CVS" />
+		</copy>
+	</target>
+
+	<target name="release" depends="replace">
+		<compsync todir="${to_doc}" execsync="yes">
+			<fileset dir="${doc}" excludes="**/CVS" />
+			<filesmatch.reg>
+				<expression format="Generated by javadoc%s on %3s %3s %D %H:%m:%S JST %Y" />
+				<expression format='META NAME="date" CONTENT="%Y-%M-%D"' />
+			</filesmatch.reg>
+			<log>
+				<param name="cp" value="copy %s %d" />
+				<param name="rm" value="del %d" />
+			</log>
+		</compsync>
+	</target>
+
+</project>

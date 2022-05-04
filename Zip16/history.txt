@@ -1,0 +1,20 @@
+●2008.12.21
+ZipPasswordException・ZipCrcExceptionを新設
+InfoZIP_NativeのFile#canExecute()を有効化
+クラスのJavadocのURLを変更
+@Overrideを付加
+
+●2008.12.22
+CrcInputStream#read(buf,off,len)を訂正
+crc.update(buf,0,l)
+↓
+crc.update(buf,off,l)
+
+CrcInputStreamを、CheckedInputStreamから継承するよう修正
+
+●2008.12.27
+ZipFile#entries()のJavadocコメントを修正
+	 * 当メソッドは{@link java.util.zip.ZipFile}との互換性の為に用意されたものです。
+↓
+	 * 当メソッドは{@link java.util.zip.ZipFile java.util.zip.ZipFile}との互換性の為に用意されたものです。
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<project name="sample_jnif" default="jni_func" basedir=".">
+
+	<taskdef name="jnif" classname="jp.hishidama.ant.taskdefs.JniFunc" classpath="../classes" />
+	<!--<typedef resource="typedef.properties" classpath="hmant.jar" />-->
+	<target name="jni_func">
+		<jnif destdir="c:\temp" prefix="jni_check." suffix=".txt" force="no">
+			<fileset dir="C:\share\hmdata\vc2005\hmwin32\hmwin32">
+				<include name="jp_hishidama_win32_api_*.h" />
+			</fileset>
+		</jnif>
+	</target>
+
+</project>

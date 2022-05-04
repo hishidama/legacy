@@ -1,0 +1,2 @@
+	Java_jp_hishidama_win32_mshtml_IHTMLFramesCollection_00024Native_item,
+	Java_jp_hishidama_win32_mshtml_IHTMLFramesCollection_00024Native_get_1length,

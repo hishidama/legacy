@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<project name="hmzip16" default="make_jar" basedir="..">
+	<property name="to_dir" location="C:\share\hmdata\html\asahi\tech\soft\java" />
+	<property name="jarfile" value="bin/hmzip16.jar" />
+
+	<target name="make_jar">
+		<jar jarfile="${jarfile}">
+			<fileset dir="classes">
+				<include name="**/*.class" />
+				<exclude name="**/sample/**/*.class" />
+				<exclude name="**/*Test.class" />
+				<exclude name="**/ZipInputStream.class" />
+			</fileset>
+			<fileset dir="src" includes="**/*" />
+		</jar>
+	</target>
+
+	<target name="release">
+		<copy todir="${to_dir}">
+			<fileset file="${jarfile}" />
+		</copy>
+	</target>
+
+	<target name="all" depends="make_jar,release" />
+
+</project>

@@ -1,0 +1,2 @@
+	Java_jp_hishidama_win32_mshtml_IHTMLHeadElement_00024Native_put_1profile,
+	Java_jp_hishidama_win32_mshtml_IHTMLHeadElement_00024Native_get_1profile,

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<project name="HtHtmlLexer release" default="jar" basedir=".">
+	<property name="todir" location="C:\share\hmdata\html\asahi\tech\soft\java\" />
+
+	<target name="jar">
+		<jar jarfile="htlexer.jar">
+			<fileset dir="../classes" />
+			<fileset dir="../../eval16/classes" />
+		</jar>
+	</target>
+
+	<target name="src.zip">
+		<property name="temp" location="C:/temp/htlex_src" />
+		<mkdir dir="${temp}/src" />
+		<copy todir="${temp}/src" preservelastmodified="yes">
+			<fileset dir="../src" />
+			<fileset dir="../dup" />
+		</copy>
+		<zip destfile="htlexer.src.zip">
+			<fileset dir="${temp}">
+				<include name="src/**/*" />
+			</fileset>
+			<fileset dir="..">
+				<include name="test/**/*" />
+			</fileset>
+		</zip>
+		<delete dir="${temp}" />
+	</target>
+
+	<target name="release" depends="jar,src.zip">
+		<copy file="htlexer.jar" todir="${todir}" />
+		<copy file="htlexer.src.zip" todir="${todir}" />
+	</target>
+
+</project>

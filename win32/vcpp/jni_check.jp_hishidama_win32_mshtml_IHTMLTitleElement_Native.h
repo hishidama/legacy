@@ -1,0 +1,2 @@
+	Java_jp_hishidama_win32_mshtml_IHTMLTitleElement_00024Native_put_1text,
+	Java_jp_hishidama_win32_mshtml_IHTMLTitleElement_00024Native_get_1text,

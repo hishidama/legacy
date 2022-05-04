@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<project name="ant_jar" default="jar" basedir=".">
+	<property name="todir" location="C:\share\hmdata\html\asahi\tech\soft\java\" />
+
+	<target name="jar">
+		<jar jarfile="hmant.jar">
+			<fileset dir="../classes" />
+		</jar>
+	</target>
+
+	<target name="copy for javadoc">
+		<copy file="hmant.jar" todir="../../doc/lib" />
+	</target>
+
+	<target name="release">
+		<copy file="hmant.jar" todir="${todir}" />
+	</target>
+
+</project>

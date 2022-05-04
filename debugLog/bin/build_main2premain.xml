@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<project name="debug_main2wrapper" default="premain_jar" basedir=".">
+	<target name="premain_jar">
+		<jar jarfile="debug_test_premain.jar">
+			<manifest>
+				<attribute name="Premain-Class" value="jp.hishidama.jas.JasTransferPremain" />
+			</manifest>
+		</jar>
+	</target>
+</project>

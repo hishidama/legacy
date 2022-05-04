@@ -1,0 +1,3 @@
+	Java_jp_hishidama_win32_com_ITypeInfo_00024Native_GetIDsOfNames,
+	Java_jp_hishidama_win32_com_ITypeInfo_00024Native_GetDocumentation,
+	Java_jp_hishidama_win32_com_ITypeInfo_00024Native_GetMops,

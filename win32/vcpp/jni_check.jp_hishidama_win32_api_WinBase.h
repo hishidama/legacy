@@ -1,0 +1,2 @@
+	Java_jp_hishidama_win32_api_WinBase_GetLastError,
+	Java_jp_hishidama_win32_api_WinBase_FormatMessage,

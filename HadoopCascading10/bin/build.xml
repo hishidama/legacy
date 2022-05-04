@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="Windows-31J"?>
+<project name="hadoop cascading" basedir=".">
+	<property environment="env" />
+
+	<property name="cygwin" location="C:\cygwin" />
+	<property name="hadoop.home" location="${cygwin}/usr/local/hadoop-0.20.2" />
+	<property name="cascading.home" location="${cygwin}/usr/local/cascading-1.0.18-hadoop-0.19.0+" />
+
+	<property name="target.home" location="${cygwin}/home/hadoop/tutorial" />
+	<property name="target.input" location="${target.home}/input" />
+	<property name="target.output" location="${target.home}/outputc" />
+	<property name="jar.file" location="${target.home}/cascading.jar" />
+
+	<property name="main.class" value="jp.hishidama.hadoop.cascading.wordcount.WordCountCT" />
+
+	<path id="class.path">
+		<pathelement location="../classes" />
+		<fileset dir="${hadoop.home}">
+			<include name="hadoop-*-core.jar" />
+			<include name="lib/**/*.jar" />
+		</fileset>
+		<fileset dir="${cascading.home}">
+			<include name="*.jar" />
+			<exclude name="cascading-*-*.jar" />
+			<include name="lib/*.jar" />
+		</fileset>
+	</path>
+
+
+	<target name="1.1.execute" description="word-count">
+		<java classname="${main.class}" fork="true" maxmemory="1024m">
+			<arg value="${target.input}" />
+			<arg value="${target.output}" />
+			<classpath refid="class.path" />
+			<sysproperty key="hadoop.log.dir" path="${hadoop.home}/logs" />
+			<sysproperty key="hadoop.log.file" value="hadoop.log" />
+			<sysproperty key="hadoop.home.dir" path="${hadoop.home}/" />
+			<sysproperty key="hadoop.id.str" value="${env.COMPUTERNAME}" />
+			<sysproperty key="hadoop.root.logger" value="INFO,console" />
+			<sysproperty key="hadoop.policy.file" value="hadoop-policy.xml" />
+			<env key="PATH" path="${cygwin}/bin" />
+		</java>
+	</target>
+
+	<target name="1.2.cat_output" description="outputの内容を表示する">
+		<exec executable="${cygwin}/bin/cat.exe" dir="${target.output}">
+			<arg value="*" />
+		</exec>
+	</target>
+
+
+	<target name="mk_jar" description="jarファイルを作成する">
+		<jar destfile="${jar.file}">
+			<fileset dir="../classes" />
+		</jar>
+	</target>
+
+</project>

@@ -1,0 +1,1 @@
+	Java_jp_hishidama_win32_com_ComMgr_delete,

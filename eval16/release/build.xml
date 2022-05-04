@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<project name="eval16_jar release" default="all" basedir=".">
+	<property name="build.xml" location="../bin/build.xml" />
+	<property name="todir" location="C:\share\hmdata\html\asahi\tech\soft\java\" />
+
+	<target name="call jar">
+		<ant antfile="${build.xml}" target="jar" />
+	</target>
+
+	<target name="call test_jar">
+		<ant antfile="${build.xml}" target="test_jar" />
+	</target>
+
+	<target name="release">
+		<copy todir="${todir}">
+			<fileset dir=".">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="all" depends="call test_jar, call jar, release" />
+</project>

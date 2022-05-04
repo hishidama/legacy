@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<project name="eval16_jar" default="all" basedir=".">
+	<property name="src" location="../src" />
+	<property name="test" location="../test" />
+	<property name="classes" location="../classes" />
+	<property name="test_classes" location="../classes_test" />
+
+	<target name="jar">
+		<jar jarfile="eval16.jar">
+			<fileset dir="${classes}" includes="**/*.class" />
+			<fileset dir="${src}" includes="**/*.java" />
+		</jar>
+	</target>
+
+	<target name="test_jar">
+		<jar jarfile="eval16_test.jar">
+			<fileset dir="${test_classes}" includes="**/*.class" />
+			<fileset dir="${test}" includes="**/*.java" />
+			<fileset dir="..">
+				<include name="bin/*.bat" />
+				<include name="bin/*.xml" />
+			</fileset>
+			<manifest>
+				<attribute name="Main-Class" value="jp.hishidama.eval.sample.Calc" />
+				<attribute name="Class-Path" value="eval16.jar" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="all" depends="test_jar, jar" />
+</project>

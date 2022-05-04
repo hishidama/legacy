@@ -1,0 +1,7 @@
+CVS/
+.cvsignore
+.classpath
+.project
+.settings/
+classes/
+classes_test/

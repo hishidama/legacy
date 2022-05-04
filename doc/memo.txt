@@ -1,0 +1,19 @@
+
+■■■新しいプロジェクトの追加方法■■■
+
+doc/bin/docdata.txt
+に新しいグループを追加する。
+group-new = ～
+
+doc/bin/build.xml
+に新しいグループを追加する。
+			<sourcepath path="${WS}/NEW/src" />
+			<package name="jp.hishidama.NEW.*" />
+			<group title="${group-new}" packages="jp.hishidama.NEW*" />
+
+新しいプロジェクトの各ディレクトリに
+package.html
+を追加する。
+
+
+

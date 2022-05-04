@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<project name="hmwin32" default="all" basedir=".">
+	<property name="vcpp4" location="C:\share\hmdata\progCpp\hmwin" />
+	<property name="vcpp8" location="C:\share\hmdata\vc2005\hmwin32\hmwin32" />
+	<property name="vcpp" location="${vcpp8}" />
+	<property name="classes" location="../classes" />
+	<property name="to_dir" location="C:\share\hmdata\html\asahi\soft\java" />
+
+	<target name="all" depends="make_zip,clean_log" />
+
+	<target name="javah">
+		<javah classpath="${classes}" destdir="${vcpp}">
+			<class name="jp.hishidama.win32.api.ObjBase" />
+			<class name="jp.hishidama.win32.api.WinBase" />
+			<class name="jp.hishidama.win32.api.WinUser" />
+			<class name="jp.hishidama.win32.com.ComMgr" />
+			<class name="jp.hishidama.win32.com.IDispatch$Native" />
+			<class name="jp.hishidama.win32.com.ITypeInfo$Native" />
+			<class name="jp.hishidama.win32.shdocvw.IWebBrowser$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLAnchorElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLAreaElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLAreasCollection$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLBaseElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLBlockElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLBodyElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLBRElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLButtonElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLCommentElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLControlElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLDDElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLDivElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLDListElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLDocument$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLDTElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLElementCollection$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLEmbedElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLFieldSetElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLFontElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLFormElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLFrameBase$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLFrameElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLFramesCollection$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLHeaderElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLHeadElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLHRElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLHtmlElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLIFrameElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLImgElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLInputElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLLabelElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLLegendElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLLIElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLLinkElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLListElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLLocation$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLMapElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLMarqueeElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLMetaElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLObjectElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLOListElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLOptionElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLParaElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLPhraseElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLScriptElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLSelectElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLTable$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLTableCell$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLTableCaption$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLTableCol$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLTableRow$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLTableSection$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLTextAreaElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLTextContainer$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLTitleElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLTxtRange$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLUListElement$Native" />
+			<class name="jp.hishidama.win32.mshtml.IHTMLWindow$Native" />
+		</javah>
+	</target>
+
+	<target name="jnif" depends="javah">
+		<taskdef name="jnif" classname="jp.hishidama.ant.taskdefs.JniFunc" classpath="../../ant/classes" />
+		<jnif prefix="jni_check." suffix="" force="no">
+			<fileset dir="${vcpp}" includes="jp_hishidama_*.h" />
+		</jnif>
+	</target>
+
+	<target name="make_jar">
+		<jar jarfile="hmwin32.jar">
+			<fileset dir="${classes}">
+				<exclude name="**/*Test.class" />
+				<exclude name="**/*Todo.class" />
+				<exclude name="**/*.html" />
+			</fileset>
+			<fileset dir="../src" />
+		</jar>
+	</target>
+
+	<target name="vcpp">
+		<copy todir="../vcpp">
+			<fileset dir="${vcpp}">
+				<include name="**/*.cpp" />
+				<include name="**/*.h" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="make_zip" depends="make_jar,vcpp">
+		<zip zipfile="hmwin32.zip">
+			<fileset file="hmwin32.jar" />
+			<fileset file="../lib/hmwin32.dll" />
+			<fileset dir="..">
+				<include name="vcpp/**/*" />
+				<exclude name="vcpp/**/*todo*" />
+				<exclude name="vcpp/**/jni_check.*" />
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="clean_log">
+		<delete>
+			<fileset dir=".." includes="*.log" />
+		</delete>
+	</target>
+
+	<target name="release" depends="make_zip">
+		<copy todir="${to_dir}">
+			<fileset file="hmwin32.zip" />
+		</copy>
+	</target>
+
+</project>
